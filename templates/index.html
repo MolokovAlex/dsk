@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+
+{% block title %} 
+{{ title }} 
+{% endblock %}
+
+
+{% block LinksUpMenu %}
+<li><a href="{% url 'first_page' %}" class="active">Home</a></li>
+<li><a href="{% url 'sklad_page' %}">Склад</a></li>
+<li><a href="{% url 'specification_page' %}">Спецификации</a></li>
+<li><a href="{% url 'first_page' %}">КД</a></li>
+<!-- <li><a href="#">News</a></li>
+<li><a href="#">Contacts</a></li> -->
+{% endblock %}
