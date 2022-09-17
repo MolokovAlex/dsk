@@ -1,12 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Редактирование компонента</title>
-</head>
-<body>
-    <h1>Редактирование компонента</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block LinksUpMenu %}
+<li><a href="{% url 'first_page' %}" >Home</a></li>
+<li><a href="{%url 'sklad_page' %}">Склад</a></li>
+{% endblock%}
+
+{% block LinksRightNavigator %}
+        <li><a href="{% url 'add_test_data_DBC' %}">Заполнить DBC test data</a></li>
+        <li><a href="#">Et veritatis quasi</a></li>
+        <li><a href="#">Vitae dicta sunt explicabo</a></li>
+        <li><a href="#">Nectun sed quia conseq</a></li>
+        <li><a href="#">Natus error sit voluptatem</a></li>
+        <li><a href="#">Vitae dicta sunt explicabo</a></li>
+        <li><a href="#">Et veritatis quasi</a></li>
+        <li><a href="#">Nectun sed quia conseq</a></li>
+        <li><a href="#">Natus error sit voluptatem</a></li>
+        <li><a href="#">Vitae dicta sunt explicabo</a></li>
+{% endblock %}
+
+{% block RightColumnBlock%}
+<h3>Lorem ipsum dolor sit</h3>
+<p><i>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</i></p>
+<p><a href="#" class="more">Read more »</a></p>
+{% endblock%}
+
+
+
+{% block table %}
+<h2>Редактирование компонентов</h2>					
+<table class="bordered">
+    <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Наименование</th>
+            <th>Количество</th>
+            <th>Ед.изм</th>
+            <th>Путь</th>
+            <th>Комментарий</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Gitsome</td>
+            <td>Some one</td>
+            <td>Take mose</td>
+            <td>Likbes</td>
+            <td>Likbes</td>
+            <td>Racounter</td>
+        </tr>
+        <tr>
+            <td>Linkage</td>
+            <td>Fordor</td>
+            <td>Miad ron me</td>
+            <td>Diablo core</td>
+            <td>Likbes</td>
+            <td>Tidbade</td>
+        </tr>
+        <tr>
+            <td>Hicura</td>
+            <td>Warecom</td>
+            <td>Xamicon</td>
+            <td>Yamama</td>
+            <td>Likbes</td>
+            <td>Udoricano</td>
+        </tr>
+        <tr>
+            <td>Lavistaro</td>
+            <td>Micanorta</td>
+            <td>Ebloconte ma</td>
+            <td>Quad ri port</td>
+            <td>Likbes</td>
+            <td>Timesquer</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

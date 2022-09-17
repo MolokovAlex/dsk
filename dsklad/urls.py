@@ -11,7 +11,8 @@ urlpatterns = [
     # path('dsklad/edit_DBC/', editDBC, name='edit_DBC'),
     path('edit_DBC/', editDBC, name='edit_DBC'),
     path('income/', income, name='income'),
-    path('expenditure/', expenditure, name='expenditure')
+    path('expenditure/', expenditure, name='expenditure'),
+    path('add_test_data_DBC/', add_test_data_DBC, name='add_test_data_DBC')
 ]
 
 # if settings.DEBUG:
