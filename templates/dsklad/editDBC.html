@@ -10,8 +10,8 @@
 
 {% block LinksRightNavigator %}
         <li><a href="{% url 'add_test_data_DBC' %}">Заполнить DBC test data</a></li>
-        <li><a href="#">Et veritatis quasi</a></li>
-        <li><a href="#">Vitae dicta sunt explicabo</a></li>
+        <li><a href="{% url 'add_test_data_DBU' %}">Заполнить DBU test data</a></li>
+        <li><a href="{% url 'add_test_data_DBGC' %}">Заполнить DBGC test data</a></li>
         <li><a href="#">Nectun sed quia conseq</a></li>
         <li><a href="#">Natus error sit voluptatem</a></li>
         <li><a href="#">Vitae dicta sunt explicabo</a></li>
@@ -34,47 +34,29 @@
 <table class="bordered">
     <thead>
         <tr>
-            <th>Дата</th>
             <th>Наименование</th>
             <th>Количество</th>
             <th>Ед.изм</th>
-            <th>Путь</th>
-            <th>Комментарий</th>
+            <th>мин.кол. наскладе</th>
+            <th>Артикул 1С</th>
+            <th>Код 1С</th>
+            <th>Наименование 1С</th>
+            <th>Группа</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Gitsome</td>
-            <td>Some one</td>
-            <td>Take mose</td>
-            <td>Likbes</td>
-            <td>Likbes</td>
-            <td>Racounter</td>
+        {% for item in dbcAll %}
+        <tr> 
+            <td>{{ item.name }} </td>
+            <td>{{ item.amount }} </td>
+            <td>{{ item.id_unit }} </td>
+            <td>{{ item.min_rezerve }} </td>
+            <td>{{ item.articul_1C }} </td>
+            <td>{{ item.code_1C }} </td>
+            <td>{{ item.name_1C }} </td>
+            <td>{{ item.id_parent }} </td>
         </tr>
-        <tr>
-            <td>Linkage</td>
-            <td>Fordor</td>
-            <td>Miad ron me</td>
-            <td>Diablo core</td>
-            <td>Likbes</td>
-            <td>Tidbade</td>
-        </tr>
-        <tr>
-            <td>Hicura</td>
-            <td>Warecom</td>
-            <td>Xamicon</td>
-            <td>Yamama</td>
-            <td>Likbes</td>
-            <td>Udoricano</td>
-        </tr>
-        <tr>
-            <td>Lavistaro</td>
-            <td>Micanorta</td>
-            <td>Ebloconte ma</td>
-            <td>Quad ri port</td>
-            <td>Likbes</td>
-            <td>Timesquer</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

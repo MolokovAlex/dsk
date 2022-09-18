@@ -12,7 +12,10 @@ urlpatterns = [
     path('edit_DBC/', editDBC, name='edit_DBC'),
     path('income/', income, name='income'),
     path('expenditure/', expenditure, name='expenditure'),
-    path('add_test_data_DBC/', add_test_data_DBC, name='add_test_data_DBC')
+    path('add_test_data_DBC/', add_test_data_DBC, name='add_test_data_DBC'),
+    path('add_test_data_DBU/', add_test_data_DBU, name='add_test_data_DBU'),
+    path('add_test_data_DBGC/',add_test_data_DBGC, name='add_test_data_DBGC'),
+    path('add_test_data_DBI/',add_test_data_DBI, name='add_test_data_DBI')
 ]
 
 # if settings.DEBUG:

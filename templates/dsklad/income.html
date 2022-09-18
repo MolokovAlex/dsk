@@ -37,44 +37,20 @@
             <th>Дата</th>
             <th>Наименование</th>
             <th>Количество</th>
-            <th>Ед.изм</th>
-            <th>Путь</th>
-            <th>Комментарий</th>
+            <th>Комментарии</th>
+
         </tr>
     </thead>
     <tbody>
+        {% for item in incomeAll %}
         <tr>
-            <td>Gitsome</td>
-            <td>Some one</td>
-            <td>Take mose</td>
-            <td>Likbes</td>
-            <td>Likbes</td>
-            <td>Racounter</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.id_component }}</td>
+            <td>{{ item.amount }}</td>
+            <td>{{ item.comments }}</td>
+
         </tr>
-        <tr>
-            <td>Linkage</td>
-            <td>Fordor</td>
-            <td>Miad ron me</td>
-            <td>Diablo core</td>
-            <td>Likbes</td>
-            <td>Tidbade</td>
-        </tr>
-        <tr>
-            <td>Hicura</td>
-            <td>Warecom</td>
-            <td>Xamicon</td>
-            <td>Yamama</td>
-            <td>Likbes</td>
-            <td>Udoricano</td>
-        </tr>
-        <tr>
-            <td>Lavistaro</td>
-            <td>Micanorta</td>
-            <td>Ebloconte ma</td>
-            <td>Quad ri port</td>
-            <td>Likbes</td>
-            <td>Timesquer</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

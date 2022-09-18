@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block LinksUpMenu %}
+<li><a href="{% url 'first_page' %}" >Home</a></li>
+<li><a href="{%url 'sklad_page' %}">Склад</a></li>
+{% endblock%}
+
+
+{% block form1 %}
+<h1>Add test data in DBU</h1>
+
+<form action="{% url 'add_test_data_DBU' %}" method="post">
+    {% csrf_token %}    <!-- защита формы от подделки злоумышленника. Добавляется csrf токен в форму, который при каждом обновлении формы меняется. 
+        Этот токен  проверяется web-сервером на валидность -->
+
+    <button type="submit">Button Add test data in DBU</button>
+</form>
+{% endblock %}
