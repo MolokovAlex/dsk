@@ -8,28 +8,31 @@
 <li><a href="{%url 'sklad_page' %}">Склад</a></li>
 {% endblock%}
 
-
-{% block form1 %}
+{% block LinksRightNavigator %}
 
 {% endblock %}
 
+{% block RightColumnBlock%}
+
+{% endblock%}
+
+
+
 {% block table %}
-<h2>Редактирование групп компонентов</h2>					
+<h2>Редактирование ед.измерения</h2>					
 <table class="bordered">
     <thead>
         <tr>
             <th>id</th>
-            <th>Наименование группы</th>
-            <th>id родительской группы</th>
+            <th>Наименование</th>
 
         </tr>
     </thead>
     <tbody>
         {% for item in dbcAll %}
         <tr> 
-            <td>{{ item.pk }} </td>
+            <td>{{ item.id_dbu }} </td>
             <td>{{ item.name }} </td>
-            <td>{{ item.id_parent }} </td>
         </tr>
         {% endfor %}
     </tbody>

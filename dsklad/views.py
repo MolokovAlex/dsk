@@ -21,6 +21,22 @@ def editDBC(request):
     }
     return render(request, 'dsklad\editDBC.html', data_in_template_editDBC)
 
+def editDBU(request):
+    dbcAll = DBU.objects.all()
+    data_in_template_editDBU= {
+        'dbcAll': dbcAll,
+        'title': 'Список ед.измерения',
+    }
+    return render(request, 'dsklad\editDBU.html', data_in_template_editDBU)
+
+def editDBGC(request):
+    dbcAll = DBGC.objects.all()
+    data_in_template_editDBGC= {
+        'dbcAll': dbcAll,
+        'title': 'Список групп компонентов',
+    }
+    return render(request, 'dsklad\editDBGC.html', data_in_template_editDBGC)
+
 def income(request):
     incomeAll = DBI.objects.all()
     data_in_template_income= {
