@@ -17,7 +17,8 @@ urlpatterns = [
     path('add_test_data_DBC/', add_test_data_DBC, name='add_test_data_DBC'),
     path('add_test_data_DBU/', add_test_data_DBU, name='add_test_data_DBU'),
     path('add_test_data_DBGC/',add_test_data_DBGC, name='add_test_data_DBGC'),
-    path('add_test_data_DBI/',add_test_data_DBI, name='add_test_data_DBI')
+    path('add_test_data_DBI/',add_test_data_DBI, name='add_test_data_DBI'),
+    path('writenewgroup', write_new_group, name='write_new_group')
 ]
 
 # if settings.DEBUG:

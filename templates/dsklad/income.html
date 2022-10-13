@@ -37,6 +37,7 @@
             <th>Дата</th>
             <th>Наименование</th>
             <th>Количество</th>
+            <th>ед.изм.</th>
             <th>Комментарии</th>
 
         </tr>
@@ -47,6 +48,7 @@
             <td>{{ item.date }}</td>
             <td>{{ item.id_component }}</td>
             <td>{{ item.amount }}</td>
+            <td>{{ item.id_component.id_unit }}</td>
             <td>{{ item.comments }}</td>
 
         </tr>

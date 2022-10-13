@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block LinksUpMenu %}
-<li><a href="{% url 'first_page' %}" >Home</a></li>
+<li><a href="{% url 'first_page' %}">Home</a></li>
 <li><a href="{%url 'sklad_page' %}">Склад</a></li>
 {% endblock%}
 
@@ -19,24 +19,53 @@
 
 
 {% block table %}
-<h2>Редактирование групп компонентов</h2>					
+<h2>Редактирование групп компонентов</h2>
 <table class="bordered">
     <thead>
         <tr>
             <th>id</th>
             <th>Наименование группы</th>
             <th>id родительской группы</th>
+            <th>Path</th>
+
 
         </tr>
     </thead>
     <tbody>
-        {% for item in dbcAll %}
-        <tr> 
-            <td>{{ item.pk }} </td>
+        {% for item in list_dbgcAll %}
+        <tr>
+            <td>{{ item.id }} </td>
             <td>{{ item.name }} </td>
-            <td>{{ item.id_parent }} </td>
+            <td>{{ item.parent }} </td>
+            <td>{{ item.path}}</td>
+
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<form method="post" action="{% url 'write_new_group' %}">
+    {% csrf_token %} 
+    <input name="NameNewGroup" />
+    
+    <input type="submit" value="Записать новую группу" />
+</form>
+
+<ul class="treeCSS">
+    <li>Сайт
+        <ul>
+            <li>Блог
+                <ul>
+                    <li>HTML
+                    <li>CSS
+                    <li>JavaScript
+                </ul>
+            <li>Контакты
+        </ul>
+</ul>
+
+
+
+
+
 {% endblock %}

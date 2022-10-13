@@ -9,29 +9,15 @@
 {% endblock%}
 
 
+
+
 {% block form1 %}
+<h1>Add test data in DBGC</h1>
 
-{% endblock %}
+<form action="{% url 'add_test_data_DBGC' %}" method="post">
+    {% csrf_token %}    <!-- защита формы от подделки злоумышленника. Добавляется csrf токен в форму, который при каждом обновлении формы меняется. 
+        Этот токен  проверяется web-сервером на валидность -->
 
-{% block table %}
-<h2>Редактирование групп компонентов</h2>					
-<table class="bordered">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Наименование группы</th>
-            <th>id родительской группы</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in dbcAll %}
-        <tr> 
-            <td>{{ item.pk }} </td>
-            <td>{{ item.name }} </td>
-            <td>{{ item.id_parent }} </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <button type="submit">Button Add test data in DBGC</button>
+</form>
 {% endblock %}

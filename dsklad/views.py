@@ -1,3 +1,6 @@
+# from asyncio.windows_events import NULL
+from asyncio.windows_events import NULL
+from calendar import c
 from django.shortcuts import render
 from .forms import *
 from .models import DBC, DBU, DBGC, DBI
@@ -30,17 +33,41 @@ def editDBU(request):
     return render(request, 'dsklad\editDBU.html', data_in_template_editDBU)
 
 def editDBGC(request):
-    dbcAll = DBGC.objects.all()
+    list_dbgcAll = []
+    dbgcAll = DBGC.objects.all()
+    for item in dbgcAll:
+        di = {}
+        di['id'] = item.id_dbgc
+        di['name'] = item.name
+        di['parent'] = item.id_parent
+        di['path'] = createPathParent(item=item, db=dbgcAll)
+        list_dbgcAll.append(di)
     data_in_template_editDBGC= {
-        'dbcAll': dbcAll,
+        'list_dbgcAll': list_dbgcAll,
         'title': 'Список групп компонентов',
     }
     return render(request, 'dsklad\editDBGC.html', data_in_template_editDBGC)
 
+def createPathParent(item, db):
+    path = ''
+    if item.id_parent:
+        a = str(item.id_parent)
+        while a != 'None':
+            path = a+'\\'+path
+            for item2 in db:
+                b = str(item2.name)
+                if a == b:
+                    a = str(item2.id_parent)
+                    break
+    return path
+
 def income(request):
     incomeAll = DBI.objects.all()
+    DBCAll = DBC.objects.all()
+    # dsfgf = DBC.id_parent
     data_in_template_income= {
         'incomeAll': incomeAll,
+        'DBC_all':DBCAll,
         'title': 'Список приходов',
     }
     return render(request, 'dsklad\income.html', context=data_in_template_income)
@@ -58,7 +85,7 @@ def add_test_data_DBC(request):
         ('6Р150 розетка блочная', 6,      1,  1,  'К155ЛА8',  '00101217553',  'nК155ЛА8', 9,  0)            #id=5
     ]
     if request.method == 'POST': # отправляем данные с формы с монитора
-        field_DBC = ['name','amount','id_unit','min_rezerve','articul_1C','code_1C','name_1C','id_parent','id_lvl']
+        field_DBC = ['name','amount','id_unit_id','min_rezerve','articul_1C','code_1C','name_1C','id_parent_id','id_lvl']
         for item in data_list_demo_DBC:
             row_data_in_DBC = {field_DBC:item for (field_DBC,item) in zip(field_DBC,item)}
             DBC.objects.create(**row_data_in_DBC)  
@@ -105,22 +132,39 @@ def add_test_data_DBU(request):
     return render(request, 'dsklad\dd_test_data_DBU.html')
 
 def add_test_data_DBGC(request):
+    # data_list_demo_DBGC = [
+    #     ('Склад',       1),     #id=1
+    #     ('Разъемы',     1),     #id=2
+    #     ('DIN',         2),     #id=3
+    #     ('СП Каскад',   2),     #id=4
+    #     ('6Р100-6Р150', 2),     #id=5
+    #     ('СНП407-100',  4),     #id=6
+    #     ('СНП407-150',  4),     #id=7
+    #     ('6Р100',       5),     #id=8
+    #     ('6Р150',       5),     #id=9
+    #     ('DIN 32 конт', 3),     #id=10
+    #     ('DIN 64 конт', 3),     #id=11
+    #     ('Микросхемы',  1),     #id=12
+    #     ('Аналоговые',  12),    #id=13
+    #     ('Цифровые',    12),    #id=14
+    #     ('прочие',      12)     #id=15
+    #     ]
     data_list_demo_DBGC = [
-        ('Склад',       0),     #id=1
-        ('Разъемы',     1),     #id=2
-        ('DIN',         2),     #id=3
-        ('СП Каскад',   2),     #id=4
-        ('6Р100-6Р150', 2),     #id=5
-        ('СНП407-100',  4),     #id=6
-        ('СНП407-150',  4),     #id=7
-        ('6Р100',       5),     #id=8
-        ('6Р150',       5),     #id=9
-        ('DIN 32 конт', 3),     #id=10
-        ('DIN 64 конт', 3),     #id=11
-        ('Микросхемы',  1),     #id=12
-        ('Аналоговые',  12),    #id=13
-        ('Цифровые',    12),    #id=14
-        ('прочие',      12)     #id=15
+        ('Склад',       ),     #id=1
+        ('Разъемы',     ),     #id=2
+        ('DIN',         ),     #id=3
+        ('СП Каскад',   ),     #id=4
+        ('6Р100-6Р150', ),     #id=5
+        ('СНП407-100',  ),     #id=6
+        ('СНП407-150',  ),     #id=7
+        ('6Р100',       ),     #id=8
+        ('6Р150',       ),     #id=9
+        ('DIN 32 конт', ),     #id=10
+        ('DIN 64 конт', ),     #id=11
+        ('Микросхемы',  ),     #id=12
+        ('Аналоговые',  ),    #id=13
+        ('Цифровые',    ),    #id=14
+        ('прочие',      )     #id=15
         ]
     if request.method == 'POST': # отправляем данные с формы с монитора
         field_DBGC = ['name', 'id_parent']
@@ -129,4 +173,11 @@ def add_test_data_DBGC(request):
             DBGC.objects.create(**row_data_in_DBGC)  
     else:       #  GET получаем форму на монитор
         pass
-    return render(request, 'dsklad\dd_test_data_DBGC.html')    
+    return render(request, 'dsklad\dd_test_data_DBGC.html')  
+
+def write_new_group(request) :
+    if request.method == 'POST':
+        pass
+    else:
+        pass
+    return render(request, 'dsklad\editDBGC.html') 
